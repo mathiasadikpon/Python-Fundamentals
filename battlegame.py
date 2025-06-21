@@ -1,3 +1,9 @@
+"""
+Mathias Adikpon 
+Battle game
+Jun 21, 2025
+"""
+
 # Task 1:  Set Up the Game
 
 #3) 4) Declare three variables with the following names: wizard, elf, human
