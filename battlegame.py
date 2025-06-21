@@ -1,3 +1,5 @@
+# Task 1:  Set Up the Game
+
 #3) 4) Declare three variables with the following names: wizard, elf, human
 
 wizard = "Wizard"
@@ -32,3 +34,49 @@ Example: dragon_hp = 300
 """
 dragon_hp = 300
 dragon_damage = 50
+
+
+
+
+# Task 3: Player Choice
+"""
+Wrap all the code you created in Task 2 in an infinite while loop that uses the True condition.
+
+"""
+while True:
+    # Task 2: Prompt Player
+    # 1. Show the player a list of options to choose from, using the print() function.
+    print("1)\t Wizard")
+    print("2)\t Elf")
+    print("3)\t Human")
+
+    """
+    2. Use the input() function to prompt the user with the String: "Choose your character: 
+    3. Assign the value returned from the input function to a variable named character.
+    """
+    character = input("Choose your character: ")
+
+    """
+    
+    2.Inside the while loop, write a sequence of three if statements to handle the three options.
+    """
+    if character == "1":
+        character = wizard
+        my_hp = wizard_hp
+        my_damage = wizard_damage
+        break
+    if character == "2":
+        character = elf
+        my_hp = elf_hp
+        my_damage = elf_damage
+        break
+    if character == "3":
+        character = human
+        my_hp = human_hp
+        my_damage = human_damage
+        break
+    print("Unknown character")
+
+print("You have chosen the character:", character)
+print("Health ", my_hp)
+print("Damage ", my_damage)
