@@ -80,3 +80,21 @@ while True:
 print("You have chosen the character:", character)
 print("Health ", my_hp)
 print("Damage ", my_damage)
+
+# Task 4: Battle with the Dragon!
+while True:
+    dragon_hp = dragon_hp - my_damage
+    print("\nThe", character, "damaged the Dragon!")
+    print("The Dragon's hitpoints are now:", dragon_hp)
+    if dragon_hp <= 0:
+        print("\nThe Dragon has lost the battle")
+        break
+
+    my_hp = my_hp - dragon_damage
+    print("\nThe Dragon strikes back at", character)
+    print("The", character + "'s","hitpoints are now:", my_hp) 
+    if my_hp <= 0:
+        print("\nThe ", character, "has lost the battle.")
+        break
+
+
