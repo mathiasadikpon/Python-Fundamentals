@@ -11,13 +11,11 @@ def start_game():
     human = "Human"
     dwarf = "Dwarf"
 
-
     # Assign hp to characters
     wizard_hp = 70
     elf_hp = 100
     human_hp = 150
     dwarf_hp = 120
-
 
     # Assign damage to characters
     wizard_damage = 150
@@ -28,9 +26,6 @@ def start_game():
     # Assign hp and damage to the Dragon
     dragon_hp = 300
     dragon_damage = 50
-
-
-
 
     # Choose a character (Player Choice)
     while True:
