@@ -1,5 +1,6 @@
 '''Dice Game
-This is a simple dice game where the user can roll two dice and keep track of the highest score achieved.'''
+This is a simple dice game where the user can roll two dice and keep track of the highest score achieved.
+Jun 24, 2025'''
 import random
 
 # global variable to keep track of the high score
