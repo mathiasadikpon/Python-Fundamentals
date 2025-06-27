@@ -29,3 +29,10 @@ while True:
         break
     else:
         print( "Invalid credentials!") 
+
+
+# Ask user to make a choice from the menu until they choose to logout
+while True:
+    atm_menu(name)
+    option = input("Choose an option: ")
+    
