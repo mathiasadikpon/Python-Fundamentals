@@ -1,7 +1,8 @@
 
 def  show_balance(balance):
     """Display the current balance of the account."""
-    print(f"Current balance: ${balance:.2f}")
+    print(f"Current balance: ${balance}")
+    # print(f"Current balance: ${balance:.2f}") specific formatting with 2 decimal places
 
 
 def deposit(balance):
