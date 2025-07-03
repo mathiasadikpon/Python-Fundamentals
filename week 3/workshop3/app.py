@@ -64,4 +64,5 @@ while True:
     else:
         print(f"Logged in as: {authorized_user}")
 
-# Task 5: Register functionality
+# Task 6 need to be done:
+# I push wrong comment
