@@ -56,4 +56,4 @@ while True:
     else:
         print(f"Logged in as: {authorized_user}")
 
-# Task 4 
+# Task 5: Register functionality
