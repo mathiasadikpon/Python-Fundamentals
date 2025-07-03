@@ -23,7 +23,27 @@ else:
 
 # Handle user input
 while True:
-    user_input = input("Please enter your choice (1-5): ")
+    user_input = input("Choose an option: ").strip().lower()
 
     if user_input in ["1", "login"]:
-        
+        print("TODO: Write Login Functionality")
+    elif user_input in ["2", "register"]:
+        print("TODO: Write Register Functionality")
+    elif user_input in ["3", "donate"]:
+        print("TODO: Write Donate Functionality")
+    elif user_input in ["4", "show donations"]:
+        print("TODO: Write Show Donations Functionality")
+    elif user_input in ["5", "exit"]:
+        print("Leaving DonateMe...")
+        break
+    else:
+        # Invalid input handling
+        print("Invalid choice. Please try again.")
+    
+    # Show the homepage again
+    show_homepage()
+    # User login 
+    if authorized_user == "":
+        print("You must be logged in to donate.")
+    else:
+        print(f"Logged in as: {authorized_user}")
