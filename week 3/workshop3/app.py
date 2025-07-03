@@ -14,7 +14,16 @@ authorized_user = ""
 # Call the homepage function
 show_homepage()
 
+# User login 
 if authorized_user == "":
     print("You must be logged in to donate.")
 else:
     print(f"Logged in as: {authorized_user}")
+
+
+# Handle user input
+while True:
+    user_input = input("Please enter your choice (1-5): ")
+
+    if user_input in ["1", "login"]:
+        
