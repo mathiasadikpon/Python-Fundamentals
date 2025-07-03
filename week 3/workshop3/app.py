@@ -47,3 +47,5 @@ while True:
         print("You must be logged in to donate.")
     else:
         print(f"Logged in as: {authorized_user}")
+
+# Task 4 
