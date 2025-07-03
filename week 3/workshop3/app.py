@@ -4,10 +4,12 @@
 Juily, 5 2025
 """
 
+# Import necessary functions
 from donations_pkg.homepage import show_homepage
+from donations_pkg.user import login
 
 # Declare variables
-database = {"admin": "", "password": "password123"}  
+database = {"admin": "password123"}  
 donations = []
 authorized_user = ""
 
@@ -26,7 +28,13 @@ while True:
     user_input = input("Choose an option: ").strip().lower()
 
     if user_input in ["1", "login"]:
-        print("TODO: Write Login Functionality")
+        # User login functionality
+        username = input("\nEnter your username: ").strip()
+        password = input("Enter your password: ").strip()
+
+        # Call the login function
+        authorized_user = login(database, username, password)
+        
     elif user_input in ["2", "register"]:
         print("TODO: Write Register Functionality")
     elif user_input in ["3", "donate"]:
