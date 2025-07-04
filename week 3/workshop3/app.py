@@ -5,8 +5,9 @@ Juily, 5 2025
 """
 
 # Import necessary functions
-from donations_pkg.homepage import show_homepage
+from donations_pkg.homepage import show_homepage, donate
 from donations_pkg.user import login, register
+
 
 # Declare variables
 database = {"admin": "password123"}  
