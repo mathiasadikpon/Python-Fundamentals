@@ -7,21 +7,34 @@ Juily, 5 2025
 
 def login(database, username, password):
     """Login a user by checking the username and password against the database."""
+    # case-insensitive username : convert to lowercase and strip whitespace
+    username = username.strip().lower() 
     if((username in database) and (database[username] == password)): # same as (database.get(username) == password)
-        print(f"\nWelcome back {username}!")
+        print(f"\nWelcome back {username.capitalize()}!")
         return username
     elif ((username in database) and (database[username] != password)): 
         print("\nIncorrect password. Please try again.")
         return ""
     else:
          # dynamic message with username
-        print(f"\n{username} not found. Please register.")
+        print(f"\n{username.capitalize()} not found. Please register.")
         # print("User not found. Please register.") // static message
         return ""
 
-def register(database, username):
+def register(database, username, password):
     """Register a new user if the username is not already in the database."""
-    if username in database:
+    # case-insensitive username : convert to lowercase and strip whitespace
+    username = username.strip().lower()
+    if not username:
+        print("\nUsername must have at least one character.")
+        return ""
+    elif len(username) > 10:
+        print("\nUsername must not exceed 10 characters.")
+        return ""
+    elif len(password) < 6:
+        print("\nPassword must be at least 6 characters long.")
+        return ""
+    elif username in database:
         print(f"\n{username.capitalize()} already registered.")
         return ""
     else:

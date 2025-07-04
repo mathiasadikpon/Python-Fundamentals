@@ -5,7 +5,7 @@ Juily, 5 2025
 """
 
 # Import necessary functions
-from donations_pkg.homepage import show_homepage, donate
+from donations_pkg.homepage import show_homepage, donate, show_donations
 from donations_pkg.user import login, register
 
 
@@ -24,7 +24,8 @@ else:
     print(f"Logged in as: {authorized_user}")
 
 
-# Handle user input
+# Handle user options
+# Loop until the user chooses to exit
 while True:
     user_input = input("Choose an option: ").strip().lower()
 
@@ -42,7 +43,7 @@ while True:
         password = input("Enter your password: ").strip()
 
         # Call the register function
-        authorized_user = register(database, username)
+        authorized_user = register(database, username, password)
         if authorized_user:
             database[authorized_user] = password
 
@@ -55,7 +56,8 @@ while True:
             donations.append(donation_string)
             
     elif user_input in ["4", "show donations"]:
-        print("TODO: Write Show Donations Functionality")
+        # Show all donations if any
+        show_donations(donations)
     elif user_input in ["5", "exit"]:
         print("Leaving DonateMe...")
         break
@@ -69,7 +71,7 @@ while True:
     if authorized_user == "":
         print("You must be logged in to donate.")
     else:
-        print(f"Logged in as: {authorized_user}")
+        print(f"Logged in as: {authorized_user.capitalize()}")
 
 # Task 6 need to be done:
 # I push wrong comment

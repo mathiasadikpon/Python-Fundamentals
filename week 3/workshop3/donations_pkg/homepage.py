@@ -21,6 +21,17 @@ def show_homepage():
 def donate(username):
     """Function to handle donations."""
     donation_amt = float(input("\nEnter amount to donate: "))
-    donation_string = f"{username} donated ${donation_amt:.1f}"
+    donation_string = f"{username.capitalize()} donated ${donation_amt:.1f}"
     print(f"Thank you for your donation!")
     return donation_string
+
+
+def show_donations(donations):
+    """Function to display all donations."""
+    print( "\n--- All Donations ---")
+    if not donations:
+        print("Currently, there are no donations.")
+    else:
+        # Display all donations
+        for donation in donations:
+            print(donation)
