@@ -47,7 +47,13 @@ while True:
             database[authorized_user] = password
 
     elif user_input in ["3", "donate"]:
-        print("TODO: Write Donate Functionality")
+        if authorized_user == "":
+            print("\nYou are not logged in.")
+        else:
+            # Donation functionality
+            donation_string = donate(authorized_user)
+            donations.append(donation_string)
+            
     elif user_input in ["4", "show donations"]:
         print("TODO: Write Show Donations Functionality")
     elif user_input in ["5", "exit"]:

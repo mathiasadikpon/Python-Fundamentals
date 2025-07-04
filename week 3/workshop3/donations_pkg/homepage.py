@@ -20,7 +20,7 @@ def show_homepage():
 
 def donate(username):
     """Function to handle donations."""
-    donation_amt = float(input("Enter amount to donate: "))
+    donation_amt = float(input("\nEnter amount to donate: "))
     donation_string = f"{username} donated ${donation_amt:.1f}"
     print(f"Thank you for your donation!")
     return donation_string
