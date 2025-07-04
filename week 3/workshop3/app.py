@@ -53,7 +53,9 @@ while True:
         else:
             # Donation functionality
             donation_string = donate(authorized_user)
-            donations.append(donation_string)
+            if donation_string != "":
+                # Add donation when not empty
+                donations.append(donation_string)
             
     elif user_input in ["4", "show donations"]:
         # Show all donations if any

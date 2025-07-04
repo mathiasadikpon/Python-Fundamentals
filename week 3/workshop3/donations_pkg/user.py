@@ -28,8 +28,14 @@ def register(database, username, password):
     if not username:
         print("\nUsername must have at least one character.")
         return ""
+    elif username[0].isalpha() and username.isalnum():
+        print("\nUsername must start with a letter and contain only alphanumeric characters.")
+        return ""
     elif len(username) > 10:
         print("\nUsername must not exceed 10 characters.")
+        return ""
+    elif not password:
+        print("\nPassword must have at least one character.")
         return ""
     elif len(password) < 6:
         print("\nPassword must be at least 6 characters long.")

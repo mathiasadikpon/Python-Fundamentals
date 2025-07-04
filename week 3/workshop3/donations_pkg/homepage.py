@@ -20,10 +20,23 @@ def show_homepage():
 
 def donate(username):
     """Function to handle donations."""
-    donation_amt = float(input("\nEnter amount to donate: "))
-    donation_string = f"{username.capitalize()} donated ${donation_amt:.1f}"
-    print(f"Thank you for your donation!")
-    return donation_string
+    try:
+        donation_amt = float(input("\nEnter amount to donate: "))
+        if donation_amt == 0:
+            print("Donation amount cannot be zero. Please enter a valid amount.")
+            return ""
+        elif donation_amt < 0:
+            print("Donation amount cannot be negative. Please enter a valid amount.")
+            return ""
+        else:
+            donation_string = f"{username.capitalize()} donated ${donation_amt:.1f}"
+            print(f"Thank you for your donation!")
+            return donation_string
+    except:
+        print("Donation amount cannot be non-numeric. Please enter a valid amount.")
+        return ""
+
+
 
 
 def show_donations(donations):
@@ -33,5 +46,8 @@ def show_donations(donations):
         print("Currently, there are no donations.")
     else:
         # Display all donations
+        total_donations = 0
         for donation in donations:
+            total_donations += float(donation.split('$')[1])
             print(donation)
+        print(f"Total = ${total_donations:.1f}")
