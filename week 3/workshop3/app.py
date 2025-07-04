@@ -74,6 +74,3 @@ while True:
         print("You must be logged in to donate.")
     else:
         print(f"Logged in as: {authorized_user.capitalize()}")
-
-# Task 6 need to be done:
-# I push wrong comment
