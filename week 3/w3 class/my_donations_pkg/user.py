@@ -6,7 +6,7 @@
 # Mathias Adikpon
 Juily, 5 2025
 """
-class user:
+class User:
     def __init__(self, database= {"admin": "password123"}, username="", password=""):
         self.database = database
         self.username = username.strip().lower()  # case-insensitive username
