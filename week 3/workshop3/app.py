@@ -69,6 +69,7 @@ while True:
     
     # Show the homepage again
     show_homepage()
+    
     # User login 
     if authorized_user == "":
         print("You must be logged in to donate.")
