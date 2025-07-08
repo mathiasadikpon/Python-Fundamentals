@@ -55,3 +55,15 @@ class IceCreamShop:
         order = self.orders.dequeue()
         print(f"Customer: {order['customer']} -- Flavor: {order['flavor']} -- Scoops: {order['scoops']}")
 
+
+# Testing the IceCreamShop class
+if __name__ == "__main__":
+    shop = IceCreamShop(["rocky road", "mint chip", "pistachio"])
+    shop.take_order("Zachary", "pistachio", 3)
+    shop.take_order("Marcy", "mint chip", 1)
+    shop.take_order("Leopold", "vanilla", 2)
+    shop.take_order("Bruce", "rocky road", 0)
+    shop.show_all_orders()
+    shop.next_order()
+    shop.show_all_orders()
+
