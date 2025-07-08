@@ -38,10 +38,20 @@ class IceCreamShop:
 
     def show_all_orders(self):
         """print all orders in the queue"""
-        print("All Pending Ice Cream Orders:")
+        print("\nAll Pending Ice Cream Orders:")
         if self.orders.size() == 0:
             print("No pending orders.")
             return
         for order in self.orders.items:
             print(f"Customer: {order['customer']} -- Flavor: {order['flavor']} -- Scoops: {order['scoops']}")
+    
+
+    def next_order(self):
+        '''dequeue the head order in the queue and show it'''
+        print("\nNext Order Up!")
+        if self.orders.size() == 0:
+            print("No pending orders.")
+            return
+        order = self.orders.dequeue()
+        print(f"Customer: {order['customer']} -- Flavor: {order['flavor']} -- Scoops: {order['scoops']}")
 
