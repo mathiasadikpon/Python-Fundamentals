@@ -36,4 +36,12 @@ class IceCreamShop:
             self.orders.enqueue(order)
     
 
-    def show_all_orders():
+    def show_all_orders(self):
+        """print all orders in the queue"""
+        print("All Pending Ice Cream Orders:")
+        if self.orders.size() == 0:
+            print("No pending orders.")
+            return
+        for order in self.orders.items:
+            print(f"Customer: {order['customer']} -- Flavor: {order['flavor']} -- Scoops: {order['scoops']}")
+
