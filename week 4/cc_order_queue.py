@@ -26,12 +26,9 @@ class IceCreamShop:
     
     def take_order(self,customer:str, flavor:str, scoops:int):
         if flavor not in self.flavors:
-            print(f"Sorry {customer}, we don't have {flavor} flavor.")
-            return
-            
+            print(f"Sorry {customer}, we don't have {flavor} flavor.")   
         elif scoops < 1 or scoops > 3:
-            print("Choose between 1-3 sccops.")
-            return
+            print("Choose between 1-3 sccops.")           
         else:
             print("Order created!")
             order = {"customer":customer, "flavor":flavor, "scoops":scoops}
