@@ -23,3 +23,8 @@ print(f"{user.name} {user.pin} {user.password}")
 
 
 """ Driver Code for Task 2 """
+# change the name to "Bobby", pin to 4321, and password to "newpassword"
+user.change_name("Bobby")
+user.change_pin(4321)
+user.change_password("newpassword")
+print(f"{user.name} {user.pin} {user.password}")
