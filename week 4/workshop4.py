@@ -33,7 +33,7 @@ class BankUser(User):
             print(f"{self.name.capitalize()} cannot withdraw {amount:.1f}. Insufficient funds.")
         else:
             self.balance -= amount
-            print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
+            # print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
 
     def deposit(self, amount):
         """Deposits the specified amount to the BankUser's balance"""
@@ -41,7 +41,7 @@ class BankUser(User):
             print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount:.1f}")
         else:
             self.balance += amount
-            print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
+            # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
 
 """ all driver code"""
@@ -63,4 +63,15 @@ print(f"{user.name} {user.pin} {user.password}")
 # print(f"{bankBob.name} {bankBob.pin} {bankBob.password} {bankBob.balance}")
 
 """ Driver Code for Task 4"""
-bankBob = BankUser("Bob", 1234, "password")
+#Instantiate an object of the BankUser class
+bankBob = BankUser("Bob", 1234, "password") 
+# Call the show_balance method to print the balance
+bankBob.show_balance()
+# deposit 1000 to the balance
+bankBob.deposit(1000)
+# Call the show_balance method to print the balance
+bankBob.show_balance()
+# withdraw 500 from the balance
+bankBob.withdraw(500)
+# Call the show_balance method to print the balance
+bankBob.show_balance()
