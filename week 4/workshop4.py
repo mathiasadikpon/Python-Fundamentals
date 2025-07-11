@@ -25,7 +25,23 @@ class BankUser(User):
         """Prints the BankUser object's balance"""
         print(f"{self.name.capitalize()} has an account balance of: {self.balance:.1f}")
 
+    def withdraw(self, amount):
+        """Withdraws the specified amount from the BankUser's balance"""
+        if amount < 0:
+            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount:.1f}")
+        elif amount > self.balance:
+            print(f"{self.name.capitalize()} cannot withdraw {amount:.1f}. Insufficient funds.")
+        else:
+            self.balance -= amount
+            print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
 
+    def deposit(self, amount):
+        """Deposits the specified amount to the BankUser's balance"""
+        if amount < 0:
+            print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount:.1f}")
+        else:
+            self.balance += amount
+            print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
 
 """ all driver code"""
