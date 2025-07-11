@@ -63,3 +63,4 @@ print(f"{user.name} {user.pin} {user.password}")
 # print(f"{bankBob.name} {bankBob.pin} {bankBob.password} {bankBob.balance}")
 
 """ Driver Code for Task 4"""
+bankBob = BankUser("Bob", 1234, "password")
