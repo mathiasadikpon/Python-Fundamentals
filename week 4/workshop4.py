@@ -23,7 +23,7 @@ class BankUser(User):
     
     def show_balance(self):
         """Prints the BankUser object's balance"""
-        print(f"{self.name.capitalize()} has an account balance of: {self.balance:.1f}")
+        print(f"{self.name.capitalize()} has an account balance of: {0 if self.balance else f'{self.balance:.1f}'}")
 
     def withdraw(self, amount):
         """Withdraws the specified amount from the BankUser's balance"""
