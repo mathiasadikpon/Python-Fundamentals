@@ -21,6 +21,9 @@ class BankUser(User):
         super().__init__(name, pin, password)
         self.balance = 0
     
+    def show_balance(self):
+        """Prints the BankUser object's balance"""
+        print(f"{self.name.capitalize()} has an account balance of: {self.balance:.1f}")
 
 
 
@@ -42,3 +45,5 @@ print(f"{user.name} {user.pin} {user.password}")
 """ Driver Code for Task 3"""
 # bankBob = BankUser("Bob", 1234, "password")
 # print(f"{bankBob.name} {bankBob.pin} {bankBob.password} {bankBob.balance}")
+
+""" Driver Code for Task 4"""
