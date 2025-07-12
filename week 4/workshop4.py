@@ -1,4 +1,3 @@
-
 """
 Workshop 4: Classes and Objects
 description: This workshop focuses on creating a User class and a BankUser class that inherits from User.
