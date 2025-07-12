@@ -110,6 +110,7 @@ class BankUser(User):
     def __init__(self, name, pin, password):
         super().__init__(name, pin, password)
         self.balance = 0
+        self.on_hold = False  # Indicates if the account is on hold
 
     def show_balance(self):
         """Prints the BankUser object's balance"""
@@ -117,6 +118,9 @@ class BankUser(User):
 
     def withdraw(self, amount):
         """Withdraws the specified amount from the BankUser's balance"""
+        if self.on_hold:
+            print(f"{self.name.capitalize()}'s account is on hold. Cannot withdraw funds.")
+            return
         if isinstance(amount, str):
             try:
                 amount = float(amount)
@@ -133,6 +137,9 @@ class BankUser(User):
 
     def deposit(self, amount):
         """Deposits the specified amount to the BankUser's balance"""
+        if self.on_hold:
+            print(f"{self.name.capitalize()}'s account is on hold. Cannot deposit funds.")
+            return
         if isinstance(amount, str):
             try:
                 amount = float(amount)
@@ -148,6 +155,9 @@ class BankUser(User):
     def transfer_money(self, amount, receiver: BankUser):
         """Transfers the specified amount to another BankUser's balance"""
         print()
+        if self.on_hold:
+            print(f"{self.name.capitalize()}'s account is on hold. Cannot transfer funds.")
+            return False
         if isinstance(amount, str):
             try:
                 amount = float(amount)
@@ -187,7 +197,13 @@ class BankUser(User):
           
     def request_money(self, amount: float, sender: BankUser):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
+        
         print()
+        if self.on_hold:
+            print(f"{self.name.capitalize()}'s account is on hold. Cannot request funds.")
+            return False
+        
+        # Check if the amount is valid
         if isinstance(amount, str):
             try:
                 amount = float(amount)
