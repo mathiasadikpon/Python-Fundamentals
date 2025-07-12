@@ -1,7 +1,13 @@
 
+"""
+Workshop 4: Classes and Objects
+description: This workshop focuses on creating a User class and a BankUser class that inherits from User.
+Author: Mathias Adikpon
+Date: 07/12/2025
+"""
+
 # import os for clearing the console
 import os
-import sys
 
 def is_valid_name(name):
     """Checks if the name is valid: type string, not empty,  not just whitespace, and has characters between 2 and 10 inclusive."""
