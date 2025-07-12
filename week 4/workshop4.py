@@ -1,21 +1,81 @@
 
 # import os for clearing the console
 import os
+def is_valid_name(name):
+    """Checks if the name is valid: type string, not empty,  not just whitespace, and has characters between 2 and 10 inclusive."""
+    if not isinstance(name, str):
+        print("Name must be a string.")
+        return False
+    elif not name.strip():
+        print("Name cannot be empty or just whitespace.")
+        return False
+    elif not name.isalnum():
+        print("Name must contain only alphanumeric characters.")
+        return False
+    elif not name[0].isalpha():
+        print("Name must start with an alphabetic character.")
+        return False
+    elif len(name) < 2 or len(name) > 10:
+        print("Name must be between 2 and 10 characters long.")
+        return False
+    else:
+        return True
 
+def is_valid_pin(pin):
+    """Checks if the pin is valid: type int or str, a 4-digit number, and not negative."""
+    try:
+        pin = int(pin)
+        if pin < 0:
+            print("Pin cannot be negative.")
+            return False
+        elif len(str(pin)) != 4:
+            print("Pin must be exactly 4 digits long.")
+            return False
+        else:
+            return True
+    except:
+        print("Pin must contain only digits.")
+        return False 
+
+def is_valid_password(password):
+    """Checks if the password is valid: type string, not empty, not just whitespace, and has at least 5 characters."""
+    if not isinstance(password, str):
+        print("Password must be a string.")
+        return False
+    elif not password.strip():
+        print("Password cannot be empty or just whitespace.")
+        return False
+    elif len(password.strip()) < 5:
+        print("Password must be at least 5 characters long.")
+        return False
+    elif not password.strip().isalnum():
+        print("Password must contain only alphanumeric characters.")
+        return False
+    else:
+        return True
+    
+  
 class User:
+    """ User class represents a user with a name, pin, and password """
     def __init__(self, name, pin, password):
         self.name = name
         self.pin = pin
         self.password = password
 
     def change_name(self, new_name):
-        self.name = new_name
+        """Changes the name of the User object if the new name is valid"""
+        if is_valid_name(new_name):
+            self.name = new_name
     
     def change_pin(self, new_pin):
-        self.pin = new_pin
+        """Changes the pin of the User object if the new pin is a 4-digit number"""
+        if is_valid_pin(new_pin):            
+            self.pin = new_pin
     
     def change_password(self, new_password):
-        self.password = new_password
+
+        if is_valid_password(new_password):            
+            self.password = new_password
 
 class BankUser(User):
     """ BankUser class inherits from User class """
@@ -26,7 +86,7 @@ class BankUser(User):
     
     def show_balance(self):
         """Prints the BankUser object's balance"""
-        print(f"{self.name.capitalize()} has an account balance of: {private_formatter(self.balance)}")
+        print(f"{self.name.capitalize()} has an account balance of: {self.balance:.2f}")
 
     def withdraw(self, amount):
         """Withdraws the specified amount from the BankUser's balance"""
@@ -34,12 +94,12 @@ class BankUser(User):
             try:
                 amount = float(amount)
             except ValueError:
-                print(f"{self.name.capitalize()} cannot withdraw a non-numeric value: {amount}")
+                print(f"{self.name.capitalize()} cannot withdraw a non-numeric value: {amount:.2f}")
                 return
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {private_formatter(amount)}")
+            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount:.2f}")
         elif amount > self.balance:
-            print(f"{self.name.capitalize()} cannot withdraw {private_formatter(amount)}. Insufficient funds.")
+            print(f"{self.name.capitalize()} cannot withdraw {amount:.2f}. Insufficient funds.")
         else:
             self.balance -= amount
             # print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
@@ -53,7 +113,7 @@ class BankUser(User):
                 print(f"{self.name.capitalize()} cannot deposit a non-numeric value: {amount}")
                 return
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot deposit a negative amount: {private_formatter(amount)}")
+            print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount:.2f}")
         else:
             self.balance += amount
             # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
@@ -68,13 +128,13 @@ class BankUser(User):
                 print(f"{self.name.capitalize()} cannot transfer a non-numeric value: {amount}")
                 return False
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot transfer a negative amount: {private_formatter(amount)}")
+            print(f"{self.name.capitalize()} cannot transfer a negative amount: {amount:.2f}")
             return False
         if amount == 0:
             print(f"{self.name.capitalize()} cannot transfer zero amount.")
             return False
         if amount > self.balance:
-            print(f"{self.name.capitalize()} cannot transfer {private_formatter(amount)}. Insufficient funds.")
+            print(f"{self.name.capitalize()} cannot transfer {amount:.2f}. Insufficient funds.")
             return False
         if not isinstance(receiver, BankUser):
             print(f"{self.name.capitalize()} cannot transfer money to a non-BankUser: {receiver}")
@@ -84,13 +144,13 @@ class BankUser(User):
             return False
         
         # Print the transfer details
-        print(f"You are transferring ${private_formatter(amount)} to {receiver.name.capitalize()}")
+        print(f"You are transferring ${amount:.2f} to {receiver.name.capitalize()}")
         # Authenticate the pin of the sender: sender is "self"
         print("Authentication required")
         pin = input("Enter your PIN: ").strip()
         if pin.isdigit() and int(pin) == self.pin:
             print("Transfer authorized")
-            print(f"Transferring ${private_formatter(amount)} to {receiver.name.capitalize()}")
+            print(f"Transferring ${amount:.2f} to {receiver.name.capitalize()}")
             self.withdraw(amount)
             receiver.deposit(amount)
             return True
@@ -101,7 +161,30 @@ class BankUser(User):
     def request_money(self, amount: 'float', sender: 'BankUser'):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
         print()
-        print(f"You are requesting ${private_formatter(amount)} from {sender.name.capitalize()}")
+        if isinstance(amount, str):
+            try:
+                amount = float(amount)
+            except ValueError:
+                print(f"{self.name.capitalize()} cannot request a non-numeric value: {amount}")
+                return False
+        if amount < 0:
+            print(f"{self.name.capitalize()} cannot request a negative amount: {amount:.2f}")
+            return False
+        if amount == 0:
+            print(f"{self.name.capitalize()} cannot request zero amount.")
+            return False
+        if amount > sender.balance:
+            print(f"{self.name.capitalize()} cannot request {amount:.2f}. Insufficient funds in {sender.name.capitalize()}'s account.")
+            return False
+        if not isinstance(sender, BankUser):
+            print(f"{self.name.capitalize()} cannot request money from a non-BankUser: {sender}")
+            return False
+        if sender.name == self.name:
+            print(f"{self.name.capitalize()} cannot request money from themselves.")
+            return False
+        
+        # Print the request details
+        print(f"You are requesting ${amount:.2f} from {sender.name.capitalize()}")
         # Authenticate the pin of the sender
         print("User authentication is required...")
         pin = input(f"Enter {sender.name.capitalize()}'s PIN: ").strip()
@@ -112,7 +195,7 @@ class BankUser(User):
                 print("Request authorized")
                 sender.withdraw(amount)
                 self.deposit(amount)
-                print(f"{sender.name.capitalize()} sent ${private_formatter(amount)}")
+                print(f"{sender.name.capitalize()} sent ${amount:.2f}")
                 return True
             else:
                 print("Invalid password. Transaction canceled.")
