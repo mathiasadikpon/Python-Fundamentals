@@ -122,7 +122,7 @@ print()
 """ Driver Code for Task 5"""
 # Instantiate two objects of the BankUser class
 bankBob = BankUser("Bob", 1234, "password") 
-bankAlice = BankUser("Alice", 5678, "newpassword")
+bankAlice = BankUser("Alice", 5678, "alicepassword")
 # Deposit $5000 into Alice's account
 bankAlice.deposit(5000)
 # Show the balance of both accounts
