@@ -64,17 +64,18 @@ def is_valid_password(password):
   
 class User:
     """ User class represents a user with a name, pin, and password. It provides methods to change these attributes."""
-    def __init__(self, name, pin, password):
-        """Initializes the User object with a name, pin, and password, or not created if the parameters are invalid."""
 
+    def __new__(cls, name, pin, password):
+        """Ensures that the User object is created only if the parameters are valid."""
         if not (is_valid_name(name) and
                 is_valid_pin(pin) and
                 is_valid_password(password)):
-            
-            print(f"\nInvalid {self.__class__.__name__} initialization parameters.  Please check the parameters.")
-            return
+            print(f"\nInvalid {cls.__name__} initialization parameters.  Please check the parameters.")
+            return None
+        return super().__new__(cls)
 
-            
+    def __init__(self, name, pin, password):
+        """Initializes the User object with a name, pin, and password."""      
         self.name = name
         self.pin = pin
         self.password = password
