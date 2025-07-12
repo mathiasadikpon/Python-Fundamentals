@@ -58,6 +58,12 @@ def is_valid_password(password):
 class User:
     """ User class represents a user with a name, pin, and password """
     def __init__(self, name, pin, password):
+
+        if not (is_valid_name(name) and
+                is_valid_pin(pin) and
+                is_valid_password(password)):
+            print("\nInvalid User details provided. Please check the name, pin, and password.")
+            return
         self.name = name
         self.pin = pin
         self.password = password
@@ -84,14 +90,6 @@ class BankUser(User):
         super().__init__(name, pin, password)
         self.balance = 0
 
-        # Validate the name, pin, and password during initialization
-        if not is_valid_name(name):
-            raise ValueError("Invalid name provided. Name must be a string, not empty, and between 2 and 10 characters long.")
-        if not is_valid_pin(pin):
-            raise ValueError("Invalid pin provided. Pin must be a 4-digit number and not negative.")
-        if not is_valid_password(password):
-            raise ValueError("Invalid password provided. Password must be a string, not empty, and at least 5 characters long.")
-    
     def show_balance(self):
         """Prints the BankUser object's balance"""
         print(f"{self.name.capitalize()} has an account balance of: {self.balance:.2f}")
