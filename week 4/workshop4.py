@@ -1,5 +1,5 @@
 
-# import os
+# import os for clearing the console
 import os
 
 class User:
@@ -28,8 +28,14 @@ class BankUser(User):
         """Prints the BankUser object's balance"""
         print(f"{self.name.capitalize()} has an account balance of: {private_formatter(self.balance)}")
 
-    def withdraw(self, amount: 'float'):
+    def withdraw(self, amount):
         """Withdraws the specified amount from the BankUser's balance"""
+        if isinstance(amount, str):
+            try:
+                amount = float(amount)
+            except ValueError:
+                print(f"{self.name.capitalize()} cannot withdraw a non-numeric value: {amount}")
+                return
         if amount < 0:
             print(f"{self.name.capitalize()} cannot withdraw a negative amount: {private_formatter(amount)}")
         elif amount > self.balance:
@@ -38,17 +44,46 @@ class BankUser(User):
             self.balance -= amount
             # print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def deposit(self, amount: 'float'):
+    def deposit(self, amount):
         """Deposits the specified amount to the BankUser's balance"""
+        if isinstance(amount, str):
+            try:
+                amount = float(amount)
+            except ValueError:
+                print(f"{self.name.capitalize()} cannot deposit a non-numeric value: {amount}")
+                return
         if amount < 0:
             print(f"{self.name.capitalize()} cannot deposit a negative amount: {private_formatter(amount)}")
         else:
             self.balance += amount
             # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def transfer_money(self, amount:'float', receiver: 'BankUser'):
+    def transfer_money(self, amount, receiver: 'BankUser'):
         """Transfers the specified amount to another BankUser's balance"""
         print()
+        if isinstance(amount, str):
+            try:
+                amount = float(amount)
+            except ValueError:
+                print(f"{self.name.capitalize()} cannot transfer a non-numeric value: {amount}")
+                return False
+        if amount < 0:
+            print(f"{self.name.capitalize()} cannot transfer a negative amount: {private_formatter(amount)}")
+            return False
+        if amount == 0:
+            print(f"{self.name.capitalize()} cannot transfer zero amount.")
+            return False
+        if amount > self.balance:
+            print(f"{self.name.capitalize()} cannot transfer {private_formatter(amount)}. Insufficient funds.")
+            return False
+        if not isinstance(receiver, BankUser):
+            print(f"{self.name.capitalize()} cannot transfer money to a non-BankUser: {receiver}")
+            return False
+        if receiver.name == self.name: #self transfer check
+            print(f"{self.name.capitalize()} cannot transfer money to themselves.")
+            return False
+        
+        # Print the transfer details
         print(f"You are transferring ${private_formatter(amount)} to {receiver.name.capitalize()}")
         # Authenticate the pin of the sender: sender is "self"
         print("Authentication required")
