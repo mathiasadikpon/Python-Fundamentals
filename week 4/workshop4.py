@@ -7,7 +7,9 @@ Date: 07/12/2025
 
 # import os for clearing the console
 import os
+from __future__ import annotations  # For type hinting self-referential types
 
+""" Helper functions"""
 def is_valid_name(name):
     """Checks if the name is valid: type string, not empty,  not just whitespace, and has characters between 2 and 10 inclusive."""
     if not isinstance(name, str):
@@ -60,8 +62,15 @@ def is_valid_password(password):
         return False
     else:
         return True
-    
-  
+
+def private_formatter(value: float | int):
+    """Formats the value to 1 decimal place if it is a float, otherwise returns the whole number if it is an integer. all returns value as a string."""
+    if value % 1 == 0:
+        return f"{value:.0f}"
+    else:
+        return f"{value:.1f}"   
+
+""" Classes and Objects"""
 class User:
     """ User class represents a user with a name, pin, and password. It provides methods to change these attributes."""
 
@@ -136,7 +145,7 @@ class BankUser(User):
             self.balance += amount
             # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def transfer_money(self, amount, receiver: 'BankUser'):
+    def transfer_money(self, amount, receiver: BankUser):
         """Transfers the specified amount to another BankUser's balance"""
         print()
         if isinstance(amount, str):
@@ -176,7 +185,7 @@ class BankUser(User):
             print("Invalid PIN. Transaction canceled.")
             return False        
           
-    def request_money(self, amount: 'float', sender: 'BankUser'):
+    def request_money(self, amount: float, sender: BankUser):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
         print()
         if isinstance(amount, str):
@@ -221,14 +230,7 @@ class BankUser(User):
         else:
             print("Invalid PIN. Transaction canceled.")
             return False
-        
-def private_formatter(value: float | int):
-    """Formats the value to 1 decimal place if it is a float, otherwise returns the whole number if it is an integer. all returns value as a string."""
-    if value % 1 == 0:
-        return f"{value:.0f}"
-    else:
-        return f"{value:.1f}"
-    
+            
 
 """ all driver code"""
 os.system('cls' if os.name == 'nt' else 'clear')  # Clear the console for better readability
@@ -245,6 +247,7 @@ user.change_pin(4321)
 user.change_password("newpassword")
 print(f"{user.name} {user.pin} {user.password}")
 print()
+
 """ Driver Code for Task 3"""
 # bankBob = BankUser("Bob", 1234, "password")
 # print(f"{bankBob.name} {bankBob.pin} {bankBob.password} {bankBob.balance}")
@@ -272,11 +275,13 @@ bankAlice.deposit(5000)
 # Show the balance of both accounts
 bankAlice.show_balance()
 bankBob.show_balance()
+
 # Have Alice transfer $500 to the Bob
 is_tranfer_successful = bankAlice.transfer_money(500, bankBob)
 # Show the balance of both accounts after the transfer
 bankAlice.show_balance()  
 bankBob.show_balance()
+
 # if the transfer was successful, have Alice request $250 from Bob
 if is_tranfer_successful:
     is_request_successful = bankAlice.request_money(250, bankBob)
