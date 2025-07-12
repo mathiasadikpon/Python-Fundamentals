@@ -9,7 +9,6 @@ Date: 07/12/2025
 from __future__ import annotations  # For type hinting self-referential types
 import os # Clear the console for better readability
 
-
 """ Helper functions"""
 def is_valid_name(name):
     """Checks if the name is valid: type string, not empty,  not just whitespace, and has characters between 2 and 10 inclusive."""
