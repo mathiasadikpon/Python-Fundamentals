@@ -127,6 +127,9 @@ class BankUser(User):
             except ValueError:
                 print(f"{self.name.capitalize()} cannot withdraw a non-numeric value: {amount:.2f}")
                 return
+        if not isinstance(amount, (int, float)):
+            print(f"{self.name.capitalize()} cannot withdraw a non-numeric value: {amount}")
+            return
         if amount < 0:
             print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount:.2f}")
         elif amount > self.balance:
@@ -146,6 +149,9 @@ class BankUser(User):
             except ValueError:
                 print(f"{self.name.capitalize()} cannot deposit a non-numeric value: {amount}")
                 return
+        if not isinstance(amount, (int, float)):
+            print(f"{self.name.capitalize()} cannot deposit a non-numeric value: {amount}")
+            return
         if amount < 0:
             print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount:.2f}")
         else:
@@ -164,6 +170,9 @@ class BankUser(User):
             except ValueError:
                 print(f"{self.name.capitalize()} cannot transfer a non-numeric value: {amount}")
                 return False
+        if not isinstance(amount, (int, float)):
+            print(f"{self.name.capitalize()} cannot transfer a non-numeric value: {amount}")
+            return False
         if amount < 0:
             print(f"{self.name.capitalize()} cannot transfer a negative amount: {amount:.2f}")
             return False
@@ -176,7 +185,8 @@ class BankUser(User):
         if not isinstance(receiver, BankUser):
             print(f"{self.name.capitalize()} cannot transfer money to a non-BankUser: {receiver}")
             return False
-        if receiver.name == self.name: #self transfer check
+        if receiver.name == self.name: 
+            #self transfer check not allowed
             print(f"{self.name.capitalize()} cannot transfer money to themselves.")
             return False
         
@@ -197,9 +207,10 @@ class BankUser(User):
           
     def request_money(self, amount: float, sender: BankUser):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
-        
+
         print()
         if self.on_hold:
+            # If the account is on hold, print a message and return False
             print(f"{self.name.capitalize()}'s account is on hold. Cannot request funds.")
             return False
         
@@ -210,6 +221,10 @@ class BankUser(User):
             except ValueError:
                 print(f"{self.name.capitalize()} cannot request a non-numeric value: {amount}")
                 return False
+        # Check if the amount is negative, zero, or exceeds the sender's balance
+        if not isinstance(amount, (int, float)):
+            print(f"{self.name.capitalize()} cannot request a non-numeric value: {amount}")
+            return False        
         if amount < 0:
             print(f"{self.name.capitalize()} cannot request a negative amount: {amount:.2f}")
             return False
@@ -222,7 +237,8 @@ class BankUser(User):
         if not isinstance(sender, BankUser):
             print(f"{self.name.capitalize()} cannot request money from a non-BankUser: {sender}")
             return False
-        if sender.name == self.name:
+        if sender.name.strip().lower() == self.name.strip().lower():
+            # self transfer request not allowed
             print(f"{self.name.capitalize()} cannot request money from themselves.")
             return False
         
