@@ -6,8 +6,9 @@ Date: 07/12/2025
 """
 
 # import os for clearing the console
-import os
 from __future__ import annotations  # For type hinting self-referential types
+import os # Clear the console for better readability
+
 
 """ Helper functions"""
 def is_valid_name(name):
