@@ -83,6 +83,14 @@ class BankUser(User):
     def __init__(self, name, pin, password):
         super().__init__(name, pin, password)
         self.balance = 0
+
+        # Validate the name, pin, and password during initialization
+        if not is_valid_name(name):
+            raise ValueError("Invalid name provided. Name must be a string, not empty, and between 2 and 10 characters long.")
+        if not is_valid_pin(pin):
+            raise ValueError("Invalid pin provided. Pin must be a 4-digit number and not negative.")
+        if not is_valid_password(password):
+            raise ValueError("Invalid password provided. Password must be a string, not empty, and at least 5 characters long.")
     
     def show_balance(self):
         """Prints the BankUser object's balance"""
