@@ -270,16 +270,16 @@ os.system('cls' if os.name == 'nt' else 'clear')  # Clear the console for better
 
 """ Driver Code for Task 1 """
 # user "Bob" as the name, 1234 as the pin, and "password" as the password
-user = User("Bob", 1234, "password")
-print(f"{user.name} {user.pin} {user.password}")
+# user = User("Bob", 1234, "password")
+# print(f"{user.name} {user.pin} {user.password}")
 
 """ Driver Code for Task 2 """
 # change the name to "Bobby", pin to 4321, and password to "newpassword"
-user.change_name("Bobby")
-user.change_pin(4321)
-user.change_password("newpassword")
-print(f"{user.name} {user.pin} {user.password}")
-print()
+# user.change_name("Bobby")
+# user.change_pin(4321)
+# user.change_password("newpassword")
+# print(f"{user.name} {user.pin} {user.password}")
+# print()
 
 """ Driver Code for Task 3"""
 # bankBob = BankUser("Bob", 1234, "password")
