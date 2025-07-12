@@ -28,9 +28,9 @@ class BankUser(User):
     def withdraw(self, amount):
         """Withdraws the specified amount from the BankUser's balance"""
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount:.1f}")
+            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount}")
         elif amount > self.balance:
-            print(f"{self.name.capitalize()} cannot withdraw {amount:.1f}. Insufficient funds.")
+            print(f"{self.name.capitalize()} cannot withdraw {amount}. Insufficient funds.")
         else:
             self.balance -= amount
             # print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
@@ -38,12 +38,12 @@ class BankUser(User):
     def deposit(self, amount):
         """Deposits the specified amount to the BankUser's balance"""
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount:.1f}")
+            print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount}")
         else:
             self.balance += amount
             # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def transfer_money(self, amount: 'float', receiver: 'BankUser'):
+    def transfer_money(self, amount, receiver: 'BankUser'):
         """Transfers the specified amount to another BankUser's balance"""
         print()
         print(f"You are transferring ${amount} to {receiver.name.capitalize()}")
@@ -63,7 +63,7 @@ class BankUser(User):
         
 
     
-    def request_money(self, amount: 'float', sender: 'BankUser'):
+    def request_money(self, amount, sender: 'BankUser'):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
         print()
         print(f"You are requesting ${amount} from {sender.name.capitalize()}")
@@ -100,7 +100,7 @@ user.change_name("Bobby")
 user.change_pin(4321)
 user.change_password("newpassword")
 print(f"{user.name} {user.pin} {user.password}")
-
+print()
 """ Driver Code for Task 3"""
 # bankBob = BankUser("Bob", 1234, "password")
 # print(f"{bankBob.name} {bankBob.pin} {bankBob.password} {bankBob.balance}")
@@ -122,7 +122,7 @@ print(f"{user.name} {user.pin} {user.password}")
 """ Driver Code for Task 5"""
 # Instantiate two objects of the BankUser class
 bankBob = BankUser("Bob", 1234, "password") 
-bankAlice = BankUser("Alice", 4321, "newpassword")
+bankAlice = BankUser("Alice", 5678, "newpassword")
 # Deposit $5000 into Alice's account
 bankAlice.deposit(5000)
 # Show the balance of both accounts
@@ -133,9 +133,9 @@ is_tranfer_successful = bankAlice.transfer_money(500, bankBob)
 # Show the balance of both accounts after the transfer
 bankAlice.show_balance()  
 bankBob.show_balance()
-# if the transfer was successful, have Bob request $250 from Alice
+# if the transfer was successful, have Alice request $250 from Bob
 if is_tranfer_successful:
-    is_request_successful = bankBob.request_money(250, bankAlice)
+    is_request_successful = bankAlice.request_money(250, bankBob)
     # Show the balance of both accounts after the request
     bankAlice.show_balance()  
     bankBob.show_balance()
