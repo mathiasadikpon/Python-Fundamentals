@@ -70,7 +70,7 @@ class User:
         if not (is_valid_name(name) and
                 is_valid_pin(pin) and
                 is_valid_password(password)):
-            print(f"\nInvalid {cls.__name__} initialization parameters.  Please check the parameters.")
+            print(f"\nInvalid {cls.__name__} initialization parameters.  Please check the parameters.\n")
             return None
         return super().__new__(cls)
 
