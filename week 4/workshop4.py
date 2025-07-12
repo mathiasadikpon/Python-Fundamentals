@@ -66,9 +66,8 @@ class User:
                 is_valid_pin(pin) and
                 is_valid_password(password)):
             
-            print(f"Invalid {self.__class__.__name__} initialization parameters. Please check the parameters.")
-            sys.exit(0)
-            
+            print(f"\nInvalid {self.__class__.__name__} initialization parameters.  Please check the parameters.")
+            return
 
             
         self.name = name
