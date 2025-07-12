@@ -23,50 +23,47 @@ class BankUser(User):
     
     def show_balance(self):
         """Prints the BankUser object's balance"""
-        print(f"{self.name.capitalize()} has an account balance of: {f'{self.balance:.1f}' if self.balance else 0}")
+        print(f"{self.name.capitalize()} has an account balance of: {private_formatter(self.balance)}")
 
-    def withdraw(self, amount):
+    def withdraw(self, amount: 'float'):
         """Withdraws the specified amount from the BankUser's balance"""
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {amount}")
+            print(f"{self.name.capitalize()} cannot withdraw a negative amount: {private_formatter(amount)}")
         elif amount > self.balance:
-            print(f"{self.name.capitalize()} cannot withdraw {amount}. Insufficient funds.")
+            print(f"{self.name.capitalize()} cannot withdraw {private_formatter(amount)}. Insufficient funds.")
         else:
             self.balance -= amount
             # print(f"{self.name.capitalize()} withdrew {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def deposit(self, amount):
+    def deposit(self, amount: 'float'):
         """Deposits the specified amount to the BankUser's balance"""
         if amount < 0:
-            print(f"{self.name.capitalize()} cannot deposit a negative amount: {amount}")
+            print(f"{self.name.capitalize()} cannot deposit a negative amount: {private_formatter(amount)}")
         else:
             self.balance += amount
             # print(f"{self.name.capitalize()} deposited {amount:.1f}. New balance: {self.balance:.1f}")
 
-    def transfer_money(self, amount, receiver: 'BankUser'):
+    def transfer_money(self, amount:'float', receiver: 'BankUser'):
         """Transfers the specified amount to another BankUser's balance"""
         print()
-        print(f"You are transferring ${amount} to {receiver.name.capitalize()}")
+        print(f"You are transferring ${private_formatter(amount)} to {receiver.name.capitalize()}")
         # Authenticate the pin of the sender: sender is "self"
         print("Authentication required")
         pin = input("Enter your PIN: ").strip()
         if pin.isdigit() and int(pin) == self.pin:
             print("Transfer authorized")
-            print(f"Transferring ${amount} to {receiver.name.capitalize()}")
+            print(f"Transferring ${private_formatter(amount)} to {receiver.name.capitalize()}")
             self.withdraw(amount)
             receiver.deposit(amount)
             return True
         else:
             print("Invalid PIN. Transaction canceled.")
-            return False
-            
-        
-
-    
-    def request_money(self, amount, sender: 'BankUser'):
+            return False        
+          
+    def request_money(self, amount: 'float', sender: 'BankUser'):
         """Requests the specified amount from another BankUser's balance bse on User receiving's pin and vlalide password of user requesting the money"""
         print()
-        print(f"You are requesting ${amount} from {sender.name.capitalize()}")
+        print(f"You are requesting ${private_formatter(amount)} from {sender.name.capitalize()}")
         # Authenticate the pin of the sender
         print("User authentication is required...")
         pin = input(f"Enter {sender.name.capitalize()}'s PIN: ").strip()
@@ -77,7 +74,7 @@ class BankUser(User):
                 print("Request authorized")
                 sender.withdraw(amount)
                 self.deposit(amount)
-                print(f"{sender.name.capitalize()} sent ${amount}")
+                print(f"{sender.name.capitalize()} sent ${private_formatter(amount)}")
                 return True
             else:
                 print("Invalid password. Transaction canceled.")
@@ -86,9 +83,16 @@ class BankUser(User):
             print("Invalid PIN. Transaction canceled.")
             return False
         
+def private_formatter(value: float | int):
+    """Formats the value to 1 decimal place if it is a float, otherwise returns the whole number if it is an integer. all returns value as a string."""
+    if value % 1 == 0:
+        return f"{value:.0f}"
+    else:
+        return f"{value:.1f}"
+    
 
 """ all driver code"""
-   
+
 """ Driver Code for Task 1 """
 # user "Bob" as the name, 1234 as the pin, and "password" as the password
 user = User("Bob", 1234, "password")
