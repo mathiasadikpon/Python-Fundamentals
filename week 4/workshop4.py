@@ -1,4 +1,7 @@
 
+# import os
+import os
+
 class User:
     def __init__(self, name, pin, password):
         self.name = name
@@ -92,6 +95,7 @@ def private_formatter(value: float | int):
     
 
 """ all driver code"""
+os.system('cls' if os.name == 'nt' else 'clear')  # Clear the console for better readability
 
 """ Driver Code for Task 1 """
 # user "Bob" as the name, 1234 as the pin, and "password" as the password
