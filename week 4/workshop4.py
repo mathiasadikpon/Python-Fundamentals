@@ -1,6 +1,8 @@
 
 # import os for clearing the console
 import os
+import sys
+
 def is_valid_name(name):
     """Checks if the name is valid: type string, not empty,  not just whitespace, and has characters between 2 and 10 inclusive."""
     if not isinstance(name, str):
@@ -56,14 +58,19 @@ def is_valid_password(password):
     
   
 class User:
-    """ User class represents a user with a name, pin, and password """
+    """ User class represents a user with a name, pin, and password. It provides methods to change these attributes."""
     def __init__(self, name, pin, password):
+        """Initializes the User object with a name, pin, and password, or not created if the parameters are invalid."""
 
         if not (is_valid_name(name) and
                 is_valid_pin(pin) and
                 is_valid_password(password)):
-            print("\nInvalid User details provided. Please check the name, pin, and password.")
-            return
+            
+            print(f"Invalid {self.__class__.__name__} initialization parameters. Please check the parameters.")
+            sys.exit(0)
+            
+
+            
         self.name = name
         self.pin = pin
         self.password = password
