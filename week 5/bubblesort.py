@@ -9,7 +9,7 @@ def bubblesort(the_list):
 
     for i in range(high_idx):
         list_changed = False
-        for j in range(high_idx):
+        for j in range(high_idx - i):
             item = the_list[j]
             next = the_list[j+1]
 
@@ -20,6 +20,7 @@ def bubblesort(the_list):
 
             print(the_list, i, j)
         print(list_changed)
-        if list_changed == False:
-            break
-
+     
+""" driver code """
+unsorted_list = [49, 101, 3, 12, 56]
+bubblesort(unsorted_list)
