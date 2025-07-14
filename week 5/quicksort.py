@@ -28,3 +28,8 @@ def quicksort(the_list, low_idx, high_idx):
     pivot_idx = sort_part(the_list, low_idx, high_idx)
     quicksort(the_list, low_idx, pivot_idx-1)
     quicksort(the_list, pivot_idx+1, high_idx)
+
+""" driver code """
+my_list = [5, 4, 1, 2, 3]
+quicksort(my_list, 0, len(my_list)-1)
+print("my_list:", my_list)
