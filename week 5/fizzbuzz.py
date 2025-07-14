@@ -14,4 +14,4 @@ def fizzbuzz(num):
             print(i)
 
 """ driver code """
-fizzbuzz(50)
+fizzbuzz(0)
