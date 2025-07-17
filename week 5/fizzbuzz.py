@@ -17,3 +17,5 @@ def fizzbuzz(num):
 fizzbuzz(50)
 print()
 fizzbuzz(10)
+print()
+fizzbuzz(11)
