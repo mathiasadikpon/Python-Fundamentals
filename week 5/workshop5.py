@@ -66,7 +66,7 @@ def binary_search(tries, the_list, target):
             break
         pivot = (lower_bound + upper_bound) // 2
         pivot_value = the_list[pivot]
-        print(f"pivot_value: {pivot_value}")#see  pivo
+        # print(f"pivot_value: {pivot_value}")
         if pivot_value == target:
             print(f"Found it! {pivot_value}")
             return pivot
