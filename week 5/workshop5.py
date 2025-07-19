@@ -71,10 +71,10 @@ def binary_search(tries, the_list, target):
             print(f"Found it! {pivot_value}")
             return pivot
         if pivot_value > target:
-            print("Guessing higher!")
-            upper_bound = pivot - 1
-        else:
             print("Guessing lower!")
+            upper_bound = pivot - 1
+        else:            
+            print("Guessing higher!")
             lower_bound = pivot + 1
         tries -= 1
 
