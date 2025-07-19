@@ -28,4 +28,4 @@ def guess_random_number(tries, start, stop):
 
 
 """ driver code """
-guess_random_number(3,0,10)
+guess_random_number(5,0,10)
