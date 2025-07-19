@@ -25,3 +25,7 @@ def guess_random_number(tries, start, stop):
     
     if tries == 0:
         print(f"You have failed to guess the number: {target}")
+
+
+""" driver code """
+guess_random_number(3,0,10)
