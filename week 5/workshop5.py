@@ -34,8 +34,10 @@ def guess_random_num_linear(tries, start, stop):
     print(f"The number for the program to guess is : {target}")
 
     # Linear search of target
+    t = tries
     for guess in range(start, stop + 1, 1):
         if tries == 0:
+            print("The program has failed to guess the correct number.")
             return
         print(f"Number of tries left: {tries}")
         print(f"The program is guessing... {guess}")
@@ -43,8 +45,8 @@ def guess_random_num_linear(tries, start, stop):
             print("The program has guessed the correct number!")
             return
         tries -= 1
-    if tries == 0:
-        print("The program has failed to guess the correct number.")
+
+
     
 
 
