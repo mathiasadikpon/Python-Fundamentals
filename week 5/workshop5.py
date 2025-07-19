@@ -1,5 +1,5 @@
 import random
-
+# Task 1
 def guess_random_number(tries, start, stop):
     """Guess a random number between start and stop."""
     # Generate a random number between start and stop
@@ -26,6 +26,18 @@ def guess_random_number(tries, start, stop):
     if tries == 0:
         print(f"You have failed to guess the number: {target}")
 
+# Task 2: Guess the number programmatically through linear search
+def guess_random_num_linear(tries, start, stop):
+    """Guess a random number between start and stop."""
+    # Generate a random number between start and stop
+    target = random.randint(start, stop) 
+    print(f"The number for the program to guess is : {target}")
 
-""" driver code """
-guess_random_number(5,0,10)
+    # Linear search of target
+    for guess in range(start, stop + 1, 1):
+        
+
+
+
+# """ driver code """
+# guess_random_number(5,0,10)
