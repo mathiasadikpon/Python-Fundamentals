@@ -1,3 +1,9 @@
+"""
+workshop5.py
+by Mathias Adikpon
+last update: 07/19/2025
+"""
+
 import random
 # Task 1
 def guess_random_number(tries, start, stop):
