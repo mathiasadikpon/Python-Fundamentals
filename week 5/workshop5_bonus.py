@@ -12,22 +12,27 @@ def guess_random_number(tries, start, stop):
     target = random.randint(start, stop)
 
     while tries != 0:
-        # Print the number of tries left
-        print(f"Number of tries left: {tries}")
-        # Ask the user to guess the number
-        guess = int(input(f"Guess a number between {start} and {stop}: "))
+        try:
+            # Print the number of tries left
+            print(f"Number of tries left: {tries}")
+            # Ask the user to guess the number
+            guess = int(input(f"Guess a number between {start} and {stop}: "))
+            #Check if the value is between start and stop
+            if(guess < start or guess > stop):
+                print("Your number is not in the range.\nPlease, try again!")
+            # Check if the guess is correct
+            elif guess == target:
+                print("You guessed the correct number!")
+                return
+            elif guess > target:
+                print("Guess higher!")
+            else:
+                print("Guess lower!")
 
-        # Check if the guess is correct
-        if guess == target:
-            print("You guessed the correct number!")
-            return
-        elif guess > target:
-            print("Guess higher!")
-        else:
-            print("Guess lower!")
-
-        # Decrease the number of tries left
-        tries -= 1
+            # Decrease the number of tries left
+            tries -= 1
+        except:
+            print(f"The value you enter is not a number.\nPlease try again whith value between {start} and {stop}!")
     
     if tries == 0:
         print(f"You have failed to guess the number: {target}")
