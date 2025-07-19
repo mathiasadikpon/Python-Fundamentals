@@ -6,12 +6,14 @@ def guess_random_number(tries, start, stop):
     target = random.randint(start, stop)
 
     while tries != 0:
+        # Print the number of tries left
+        print(f"Number of tries left: {tries}")
         # Ask the user to guess the number
         guess = int(input(f"Guess a number between {start} and {stop}: "))
 
         # Check if the guess is correct
         if guess == target:
-            print("Congratulations! You guessed the number!")
+            print("You guessed the correct number!")
             return
         elif guess > target:
             print("Guess higher!")
@@ -20,3 +22,6 @@ def guess_random_number(tries, start, stop):
 
         # Decrease the number of tries left
         tries -= 1
+    
+    if tries == 0:
+        print(f"You have failed to guess the number: {target}")
