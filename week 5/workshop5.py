@@ -54,7 +54,7 @@ def guess_random_num_binary(tries, start, stop):
     print(f"Random number to find: {target}")
 
     # Call Binary search of target
-    the_list = list(range(start, stop + 1, 1))
+    the_list = range(start, stop + 1, 1)
     binary_search(tries, the_list, target)   
 
 # binary search
