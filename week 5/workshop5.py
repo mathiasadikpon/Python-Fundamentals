@@ -54,7 +54,7 @@ def guess_random_num_binary(tries, start, stop):
     print(f"Random number to find: {target}")
 
     # Call Binary search of target
-    the_list = range(start, stop + 1, 1)
+    the_list = list(range(start, stop + 1, 1))
     binary_search(tries, the_list, target)   
 
 # binary search
@@ -66,6 +66,7 @@ def binary_search(tries, the_list, target):
             break
         pivot = (lower_bound + upper_bound) // 2
         pivot_value = the_list[pivot]
+        print(f"pivot_value: {pivot_value}")#see  pivo
         if pivot_value == target:
             print(f"Found it! {pivot_value}")
             return pivot
