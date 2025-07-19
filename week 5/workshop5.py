@@ -46,12 +46,41 @@ def guess_random_num_linear(tries, start, stop):
             return
         tries -= 1
 
+#Task 3: Guess the number programmatically using binary search
+def guess_random_num_binary(tries, start, stop):
+    """Guess a random number between start and stop."""
+    # Generate a random number between start and stop
+    target = random.randint(start, stop) 
+    print(f"Random number to find: {target}")
 
-    
+    # Call Binary search of target
+    the_list = range(start, stop + 1, 1)
+    binary_search(tries, the_list, target)   
 
+# binary search
+def binary_search(tries, the_list, target):
+    lower_bound = 0
+    upper_bound = len(the_list) - 1
+    while lower_bound <= upper_bound:
+        if tries == 0:
+            break
+        pivot = (lower_bound + upper_bound) // 2
+        pivot_value = the_list[pivot]
+        if pivot_value == target:
+            print(f"Found it! {pivot_value}")
+            return pivot
+        if pivot_value > target:
+            print("Guessing higher!")
+            upper_bound = pivot - 1
+        else:
+            print("Guessing lower!")
+            lower_bound = pivot + 1
+        tries -= 1
 
-
+    print("Your program has failed to find number.")
+    return -1
 
 # """ driver code """
 # guess_random_number(5,0,10)
-guess_random_num_linear(5,0,10)
+# guess_random_num_linear(5,0,10)
+guess_random_num_binary(5,0,100)
