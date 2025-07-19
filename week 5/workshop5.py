@@ -3,4 +3,20 @@ import random
 def guess_random_number(tries, start, stop):
     """Guess a random number between start and stop."""
     # Generate a random number between start and stop
-    random_number = random.randint(start, stop)
+    target = random.randint(start, stop)
+
+    while tries != 0:
+        # Ask the user to guess the number
+        guess = int(input(f"Guess a number between {start} and {stop}: "))
+
+        # Check if the guess is correct
+        if guess == target:
+            print("Congratulations! You guessed the number!")
+            return
+        elif guess > target:
+            print("Guess higher!")
+        else:
+            print("Guess lower!")
+
+        # Decrease the number of tries left
+        tries -= 1
