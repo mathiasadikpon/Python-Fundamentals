@@ -91,3 +91,4 @@ def binary_search(tries, the_list, target):
 # guess_random_number(5,0,10)
 # guess_random_num_linear(5,0,10)
 guess_random_num_binary(5,0,100)
+guess_random_num_binary(5,2,100)
